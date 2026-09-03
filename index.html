@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="My Cabinet by DOC ROI: practical pills, vitamins, medicines and resources for business transformation.">
   <title>My Cabinet · DOC ROI</title>
@@ -17,7 +18,7 @@
     footer{text-align:center;padding:40px;background:#000;color:#aebac0}.footer-brand{color:#fff;font-weight:900;font-size:19px;margin-bottom:10px}
     @media(max-width:760px){.wrap{width:min(100% - 32px,1180px)}.nav{padding:12px 0;align-items:flex-start;flex-direction:column}.brand img{width:170px;height:48px}.nav-right{width:100%;gap:12px;overflow-x:auto;padding-bottom:3px}nav{gap:14px;font-size:13px;white-space:nowrap}.header-action{margin-left:auto}.hero{min-height:auto;padding:55px 0 70px}.hero h1{font-size:62px}.lead{font-size:19px}.copy{font-size:16px}.grid,.system-grid{grid-template-columns:1fr}.shelf-body{padding:15px}.card{width:calc(50% - 7px)}.diip h2{font-size:28px}.system h2{font-size:33px}}
     .card.product-card{width:152px;background:#f7fbfd}.product-visual{position:relative;display:block;height:166px;overflow:hidden;background:#173344}.product-visual img{width:100%;height:100%;object-fit:cover;display:block}.product-visual:after{content:"";position:absolute;inset:0;background:rgba(0,59,92,.32)}.product-title{position:absolute;z-index:2;top:14px;left:8px;right:8px;color:#fff;text-align:center;font-size:15px;line-height:1.15;font-weight:900;text-shadow:0 1px 3px #000}.version-tag{position:absolute;z-index:2;left:34px;right:34px;bottom:10px;background:#197044;color:#fff;border-radius:4px;padding:4px 3px;text-align:center;font-size:13px;font-style:italic;font-weight:800}.product-card .open-card{margin:6px 7px 2px;padding:5px;font-size:13px;border-radius:8px}.share-card{display:block;width:100%;border:0;background:transparent;color:var(--docroi-blue);font-size:11px;font-weight:900;text-transform:uppercase;padding:4px 6px 7px;cursor:pointer}.share-card:hover{text-decoration:underline}.share-card.copied{color:#197044}.market-research-banner{position:relative;min-height:72px;display:flex;align-items:flex-end;margin:-2px 0 16px;padding:12px 14px;border-radius:6px;overflow:hidden;background-image:linear-gradient(90deg,rgba(0,35,55,.92),rgba(0,59,92,.46)),url('upload/Market Research.png');background-size:cover;background-position:center 52%;color:#fff}
-    .shelf-head{background:#eaf7fc}.market-research-banner{min-height:0;display:block;margin:0 0 12px;padding:0;border-radius:0;background:none;color:#fff}.version-tag.booster-version{background:#08799d}.pending-link{display:block;margin:6px 7px 2px;padding:5px;border-radius:8px;background:var(--docroi-blue);color:#fff;text-align:center;font-size:13px;opacity:.78}.share-card:disabled{cursor:not-allowed;opacity:.55;text-decoration:none}
+    .shelf-head{background:#eaf7fc}.market-research-banner{min-height:0;display:block;margin:0 0 12px;padding:0;border-radius:0;background:none;color:#fff}.version-tag.booster-version{background:#08799d}.version-tag.soon-version{background:rgba(107,31,55,.82)}.pending-link{display:block;margin:6px 7px 2px;padding:5px;border-radius:8px;background:var(--docroi-blue);color:#fff;text-align:center;font-size:13px;opacity:.78}.share-card:disabled{cursor:not-allowed;opacity:.55;text-decoration:none}
     .diiip-row{background:#fff;color:#0B0F19;border-radius:18px;padding:16px 20px;display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:center;border:1px solid #E5E7EB}.diiip-letter{width:48px;height:48px;border-radius:14px;background:#0B0F19;color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:900}.diiip-row strong{display:block;font-size:20px;margin-bottom:4px;color:#0B0F19}.diiip-row p{margin:0;font-size:14px;line-height:1.5;color:#5B6472}
   </style>
 </head>
@@ -67,7 +68,10 @@
     };
     const operationsMedicines={
       'International Operations':{url:'https://simulador-internacional-operaciones-chi.vercel.app/',image:'https://docroi.marketing/wp-content/uploads/2026/09/Inernational-Operations.png',version:'Beta.es'},
-      'SLA':{url:'https://sla-ra5os3nko-doc-roi-s-projects.vercel.app/#contrato',image:'',version:'Beta.es'}
+      'SLA':{url:'https://sla-ra5os3nko-doc-roi-s-projects.vercel.app/#contrato',image:'https://docroi.marketing/wp-content/uploads/2026/09/SLA.png',version:'Beta.es'}
+    };
+    const resourceSupplements={
+      'Talent Management':{image:'https://docroi.marketing/wp-content/uploads/2026/09/Productiviad-Quality.png',version:'soon.eng'}
     };
     document.querySelectorAll('[data-items]').forEach(box=>box.dataset.items.split('|').forEach((name,i)=>{
       const c=document.createElement('article');
@@ -96,6 +100,11 @@
         }else{
           c.innerHTML=`<div class="product-visual"><img src="${vitamin.image}" alt="DOC ROI visual for ${name}"><strong class="product-title">${title}</strong><span class="version-tag">${vitamin.version}</span></div><span class="pending-link" title="Destination URL pending">Open vitamin</span><button class="share-card" type="button" disabled title="Destination URL pending">Share</button>`;
         }
+      }else if(resourceSupplements[name]){
+        const supplement=resourceSupplements[name];
+        c.className='card product-card';
+        const title=name.replace(' ','<br>');
+        c.innerHTML=`<div class="product-visual" aria-label="${name} · coming soon"><img src="${supplement.image}" alt="DOC ROI visual for ${name}"><strong class="product-title">${title}</strong><span class="version-tag soon-version">${supplement.version}</span></div><span class="pending-link" aria-disabled="true">Coming soon</span>`;
       }else{
         c.className='card';
         c.innerHTML=`<div class="thumb">${name}</div><div class="tag">${i%2?'Beta v0.4':'v1_eng'}</div><a class="open-card" href="#resources">Open resource</a><div class="mini">DOC ROI</div>`;
